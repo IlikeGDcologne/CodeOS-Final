@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CodeOS</title>
+
+    <link rel="stylesheet" href="codestyle.css" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div id="bootScreen">
+      <div id="bootContent">
+        <div id="bootLogo">💻 CodeOS</div>
+
+        <div id="bootVersion">Version 0.0.1 Alpha</div>
+
+        <div id="bootStatus">Loading Engine...</div>
+
+        <div id="bootBar">
+          <div id="bootProgress"></div>
+        </div>
+      </div>
+    </div>
+    <div id="backgroundCode"></div>
+    <nav class="navbar">
+      <div class="logo">💻 <span>CodeOS</span></div>
+
+      <div class="navButtons">
+        <button onclick="window.location = 'documentation.html'">
+          📚 Documentation
+        </button>
+        <button onclick="openWorkspace()">Launch Workspace</button>
+        <button
+          type="button"
+          class="communityLaunchButton"
+          onclick="window.location.href = 'community.html'"
+        >
+          💬 Open CodeOS Community
+        </button>
+
+        <button type="button" onclick="window.location.href = 'plus.html'">
+          👑 CDX Plus+
+        </button>
+
+        <button
+          type="button"
+          onclick="window.location.href = 'firstindex.html'"
+        >
+          >_Terminal
+        </button>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <h1>Build. Compile. Create.</h1>
+
+      <p>
+        A modern programming language with AI, a built-in compiler, debugger,
+        timeline, image support and much more.
+      </p>
+
+      <div class="heroButtons">
+        <button class="primary" onclick="openWorkspace()">
+          🚀 Launch Workspace
+        </button>
+
+        <button class="secondary" onclick="window.location = 'learn.html'">
+          📖 Learn More
+        </button>
+      </div>
+    </section>
+
+    <section class="cards">
+      <div class="card">
+        🤖
+        <h2>AI Assistant</h2>
+        <p>Generate code, explain bugs and optimise projects.</p>
+      </div>
+
+      <div class="card">
+        🛠️
+        <h2>Compiler</h2>
+        <p>Compile and debug projects in your browser.</p>
+      </div>
+
+      <div class="card">
+        🕒
+        <h2>Timeline</h2>
+        <p>Restore previous versions anytime.</p>
+      </div>
+
+      <div class="card">
+        🖼️
+        <h2>Images</h2>
+        <p>Upload and use images directly in your projects.</p>
+      </div>
+    </section>
+
+    <!-- Command Palette -->
+
+    <div id="paletteOverlay">
+      <div id="commandPalette">
+        <input
+          id="commandInput"
+          type="text"
+          placeholder="Type a command..."
+          autocomplete="off"
+        />
+
+        <div id="commandList">
+          <div class="command">🚀 Launch Workspace</div>
+          <div class="command">📂 Open Workspace</div>
+          <div class="command">✨ New Workspace</div>
+          <div class="command">⚙ Settings</div>
+          <div class="command">🤖 Ask AI</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ⚙️ Settings -->
+
+    <div id="settingsOverlay">
+      <div id="settingsPanel">
+        <div class="settingsHeader">
+          <div>
+            <h2>⚙️ Settings</h2>
+            <p>Customize your CodeOS experience.</p>
+          </div>
+
+          <button id="closeSettings">✕</button>
+        </div>
+
+        <div class="settingsContent">
+          <!-- 🎨 Appearance -->
+
+          <div class="settingsGroup">
+            <h3>🎨 Appearance</h3>
+
+            <div class="settingRow">
+              <div>
+                <strong>Theme</strong>
+                <p>Choose how CodeOS looks.</p>
+              </div>
+
+              <select id="themeSelect">
+                <option value="dark">🌙 Dark</option>
+
+                <option value="light">☀️ Light</option>
+              </select>
+            </div>
+
+            <div class="settingRow">
+              <div>
+                <strong>Accent Color</strong>
+                <p>Change CodeOS's accent.</p>
+              </div>
+
+              <input type="color" id="accentColor" value="#3b82f6" />
+            </div>
+          </div>
+
+          <!-- ✨ Interface -->
+
+          <div class="settingsGroup">
+            <h3>✨ Interface</h3>
+
+            <div class="settingRow">
+              <div>
+                <strong>Animations</strong>
+                <p>Enable CodeOS animations.</p>
+              </div>
+
+              <input type="checkbox" id="animationsToggle" checked />
+            </div>
+          </div>
+
+          <!-- 💾 Data -->
+
+          <div class="settingsGroup">
+            <h3>💾 Data</h3>
+
+            <div class="settingRow">
+              <div>
+                <strong>Reset Settings</strong>
+                <p>Restore CodeOS settings to default.</p>
+              </div>
+
+              <button id="resetSettings">Reset</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="program.js"></script>
+  </body>
+</html>

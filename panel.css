@@ -1,0 +1,1092 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    color: #f4f6ff;
+    background:
+        radial-gradient(
+            circle at 75% -10%,
+            rgba(113, 78, 255, .18),
+            transparent 35%
+        ),
+        #0b0d15;
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "SF Pro Text",
+        Inter,
+        Segoe UI,
+        sans-serif;
+
+    font-size: 12px;
+}
+
+button,
+select {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+.app {
+    display: flex;
+    height: 100%;
+}
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+.sidebar {
+    width: 205px;
+    flex-shrink: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 13px 10px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,.025),
+            rgba(255,255,255,.008)
+        );
+
+    border-right:
+        1px solid rgba(255,255,255,.07);
+}
+
+.sidebarHeader {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    padding: 8px 7px 18px;
+
+    border-bottom:
+        1px solid rgba(255,255,255,.06);
+
+    margin-bottom: 12px;
+}
+
+.brandIcon {
+    width: 32px;
+    height: 32px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(123,91,255,.23),
+            rgba(78,181,255,.12)
+        );
+
+    border:
+        1px solid rgba(162,136,255,.17);
+}
+
+.brandName {
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.brandSub {
+    margin-top: 2px;
+
+    color: #8f7cff;
+
+    font-size: 7px;
+    letter-spacing: 1.8px;
+}
+
+.navItem {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    width: 100%;
+
+    padding: 9px 10px;
+
+    margin-bottom: 3px;
+
+    border: 0;
+    border-radius: 8px;
+
+    color: #83899e;
+    background: transparent;
+
+    text-align: left;
+
+    transition:
+        background .18s,
+        color .18s,
+        transform .18s;
+}
+
+.navItem:hover {
+    color: #e7eaff;
+    background: rgba(255,255,255,.045);
+}
+
+.navItem.active {
+    color: white;
+    background:
+        linear-gradient(
+            100deg,
+            rgba(112,82,255,.19),
+            rgba(82,112,255,.08)
+        );
+
+    box-shadow:
+        inset 2px 0 0 #8970ff;
+}
+
+.navItem span {
+    width: 17px;
+    text-align: center;
+}
+
+.sidebarBottom {
+    margin-top: auto;
+
+    padding-top: 10px;
+
+    border-top:
+        1px solid rgba(255,255,255,.06);
+}
+
+.connectionStatus {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    padding: 7px;
+
+    color: #777e94;
+
+    font-size: 9px;
+}
+
+.statusDot {
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: #ff7890;
+
+    box-shadow:
+        0 0 9px rgba(255,120,144,.7);
+}
+
+.statusDot.connected {
+    background: #73ffae;
+
+    box-shadow:
+        0 0 9px rgba(115,255,174,.8);
+}
+
+.refreshButton {
+    width: 100%;
+
+    padding: 8px;
+
+    border:
+        1px solid rgba(255,255,255,.07);
+
+    border-radius: 8px;
+
+    color: #9da3b8;
+    background: rgba(255,255,255,.025);
+}
+
+.refreshButton:hover {
+    color: white;
+    background: rgba(255,255,255,.06);
+}
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.main {
+    min-width: 0;
+    flex: 1;
+    overflow: auto;
+}
+
+.topbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 15px 21px;
+
+    background:
+        rgba(11,13,21,.83);
+
+    border-bottom:
+        1px solid rgba(255,255,255,.065);
+
+    backdrop-filter: blur(14px);
+}
+
+.topEyebrow,
+.sectionEyebrow,
+.miniLabel {
+    color: #8277ab;
+
+    font-size: 8px;
+    font-weight: 800;
+
+    letter-spacing: 1.7px;
+}
+
+.topbar h1 {
+    margin: 4px 0 0;
+
+    font-size: 16px;
+    letter-spacing: -.3px;
+}
+
+.runtimeBadge {
+    padding: 6px 9px;
+
+    border:
+        1px solid rgba(107,255,164,.12);
+
+    border-radius: 999px;
+
+    color: #7affac;
+    background: rgba(100,255,166,.035);
+
+    font-size: 8px;
+    font-weight: 800;
+
+    letter-spacing: 1.1px;
+}
+
+#runtimeIndicator {
+    margin-right: 4px;
+}
+
+/* =========================================================
+   VIEWS
+========================================================= */
+
+.view {
+    display: none;
+
+    padding: 20px 21px 45px;
+
+    animation: viewIn .25s ease;
+}
+
+.view.active {
+    display: block;
+}
+
+@keyframes viewIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.heroCard {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    padding: 19px;
+
+    overflow: hidden;
+
+    border:
+        1px solid rgba(255,255,255,.075);
+
+    border-radius: 15px;
+
+    background:
+        radial-gradient(
+            circle at left,
+            rgba(118,88,255,.13),
+            transparent 36%
+        ),
+        rgba(255,255,255,.025);
+}
+
+.heroOrb {
+    width: 58px;
+    height: 58px;
+
+    display: grid;
+    place-items: center;
+
+    flex-shrink: 0;
+
+    border-radius: 17px;
+
+    font-size: 25px;
+
+    background:
+        rgba(125,93,255,.1);
+
+    border:
+        1px solid rgba(157,130,255,.16);
+
+    box-shadow:
+        0 0 35px rgba(112,83,255,.13);
+}
+
+.heroCard h2 {
+    margin: 5px 0;
+
+    font-size: 21px;
+
+    letter-spacing: -.5px;
+}
+
+.heroCard p {
+    margin: 0;
+
+    color: #72798f;
+
+    font-size: 10px;
+}
+
+/* =========================================================
+   SECTIONS
+========================================================= */
+
+.sectionHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin: 26px 1px 12px;
+}
+
+.sectionHeader h2,
+.toolbarRow h2 {
+    margin: 4px 0 0;
+
+    font-size: 15px;
+    letter-spacing: -.3px;
+}
+
+/* =========================================================
+   STATS
+========================================================= */
+
+.statGrid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 9px;
+}
+
+.statCard {
+    padding: 13px;
+
+    border:
+        1px solid rgba(255,255,255,.07);
+
+    border-radius: 12px;
+
+    background:
+        rgba(255,255,255,.025);
+}
+
+.statIcon {
+    display: block;
+
+    margin-bottom: 10px;
+
+    font-size: 16px;
+}
+
+.statValue {
+    display: block;
+
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.statName {
+    display: block;
+
+    margin-top: 3px;
+
+    color: #6f768c;
+
+    font-size: 9px;
+}
+
+/* =========================================================
+   CARDS
+========================================================= */
+
+.panelCard,
+.codeEditorCard {
+    border:
+        1px solid rgba(255,255,255,.07);
+
+    border-radius: 13px;
+
+    background:
+        rgba(255,255,255,.022);
+
+    overflow: hidden;
+}
+
+.panelCardHeader,
+.editorTop {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 12px 14px;
+
+    border-bottom:
+        1px solid rgba(255,255,255,.06);
+}
+
+.panelCardHeader h3 {
+    margin: 4px 0 0;
+
+    font-size: 12px;
+}
+
+.filePill,
+.livePill {
+    padding: 4px 7px;
+
+    border-radius: 999px;
+
+    background: rgba(126,101,255,.09);
+
+    color: #aa9aff;
+
+    font-size: 7px;
+
+    letter-spacing: 1px;
+}
+
+.codePreview {
+    margin: 0;
+
+    padding: 17px;
+
+    min-height: 210px;
+    max-height: 370px;
+
+    overflow: auto;
+
+    color: #b6bee0;
+
+    font-family:
+        "SFMono-Regular",
+        Consolas,
+        monospace;
+
+    font-size: 10px;
+    line-height: 1.7;
+}
+
+/* =========================================================
+   CODE VIEW
+========================================================= */
+
+.toolbarRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 12px;
+}
+
+#fileSelector {
+    max-width: 250px;
+
+    padding: 8px 10px;
+
+    border:
+        1px solid rgba(255,255,255,.08);
+
+    border-radius: 8px;
+
+    outline: 0;
+
+    color: #e8eaff;
+    background: #151824;
+}
+
+.fullCode {
+    margin: 0;
+
+    min-height: 500px;
+
+    padding: 18px;
+
+    overflow: auto;
+
+    color: #bcc6ef;
+
+    font-family:
+        "SFMono-Regular",
+        Consolas,
+        monospace;
+
+    font-size: 10px;
+    line-height: 1.7;
+}
+
+/* =========================================================
+   SPRITES / STATE
+========================================================= */
+
+.objectGrid,
+.stateGrid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fill,
+            minmax(190px, 1fr)
+        );
+
+    gap: 9px;
+}
+
+.objectCard,
+.variableCard {
+    padding: 13px;
+
+    border:
+        1px solid rgba(255,255,255,.07);
+
+    border-radius: 12px;
+
+    background:
+        rgba(255,255,255,.025);
+}
+
+.objectTop,
+.variableTop {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+
+.objectIcon {
+    width: 35px;
+    height: 35px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 10px;
+
+    background: rgba(120,91,255,.09);
+
+    font-size: 17px;
+}
+
+.objectName,
+.variableName {
+    font-weight: 800;
+}
+
+.objectInfo {
+    margin-top: 12px;
+
+    color: #777e95;
+
+    font-family:
+        "SFMono-Regular",
+        Consolas,
+        monospace;
+
+    font-size: 9px;
+
+    line-height: 1.7;
+}
+
+.variableValue {
+    margin-top: 10px;
+
+    padding: 9px;
+
+    border-radius: 8px;
+
+    color: #9ac6ff;
+
+    background: rgba(83,133,255,.055);
+
+    font-family:
+        "SFMono-Regular",
+        Consolas,
+        monospace;
+
+    word-break: break-word;
+}
+
+.emptyState {
+    grid-column: 1 / -1;
+
+    padding: 45px 20px;
+
+    text-align: center;
+
+    color: #626a80;
+
+    border:
+        1px dashed rgba(255,255,255,.08);
+
+    border-radius: 12px;
+}
+
+/* =========================================================
+   CONSOLE
+========================================================= */
+
+.consoleBox {
+    min-height: 500px;
+
+    padding: 15px;
+
+    overflow: auto;
+
+    border:
+        1px solid rgba(255,255,255,.07);
+
+    border-radius: 12px;
+
+    background: #080a10;
+
+    font-family:
+        "SFMono-Regular",
+        Consolas,
+        monospace;
+
+    font-size: 10px;
+    line-height: 1.8;
+}
+
+.consoleLine {
+    padding: 2px 0;
+
+    color: #aeb5ca;
+}
+
+.consolePrompt {
+    color: #8d73ff;
+
+    margin-right: 7px;
+}
+
+.clearConsole {
+    padding: 7px 10px;
+
+    border:
+        1px solid rgba(255,255,255,.07);
+
+    border-radius: 7px;
+
+    color: #969db2;
+
+    background: rgba(255,255,255,.03);
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .sidebar {
+        width: 145px;
+    }
+
+    .statGrid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+/* =========================================================
+   🛠️ CODE EDITOR
+========================================================= */
+
+.codeToolbar {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.applyButton {
+    padding: 8px 11px;
+
+    border:
+        1px solid rgba(125,255,177,.18);
+
+    border-radius: 8px;
+
+    color: #a8ffc6;
+
+    background:
+        rgba(94,255,159,.055);
+
+    font-size: 9px;
+
+    transition: .2s;
+}
+
+.applyButton:hover {
+    background:
+        rgba(94,255,159,.11);
+
+    transform:
+        translateY(-1px);
+}
+
+.applyButton:disabled {
+    opacity: .5;
+    cursor: wait;
+}
+
+.editNotice {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-bottom: 10px;
+
+    padding: 10px 12px;
+
+    border:
+        1px solid rgba(143,116,255,.1);
+
+    border-radius: 10px;
+
+    color: #858da4;
+
+    background:
+        rgba(114,85,255,.035);
+
+    font-size: 9px;
+}
+
+.editNotice > span {
+    font-size: 16px;
+}
+
+.editNotice strong,
+.editNotice span {
+    display: block;
+}
+
+.editNotice strong {
+    color: #c5c9d8;
+    margin-bottom: 3px;
+}
+
+.codeEditorCard {
+    position: relative;
+}
+
+#codeEditor {
+    display: block;
+
+    width: 100%;
+    min-height: 500px;
+
+    padding: 18px;
+
+    resize: vertical;
+
+    outline: none;
+    border: 0;
+
+    color: #c3cdf4;
+
+    background:
+        #080a10;
+
+    font-family:
+        "SFMono-Regular",
+        Consolas,
+        monospace;
+
+    font-size: 11px;
+
+    line-height: 1.75;
+}
+
+#codeEditor:focus {
+    box-shadow:
+        inset 0 0 0 1px
+        rgba(126,101,255,.18);
+}
+
+.saveStatus {
+    min-height: 22px;
+
+    margin-top: 8px;
+
+    color: #82ffae;
+
+    font-size: 9px;
+}
+
+
+/* =========================================================
+   📡 NETWORK-STYLE FILES
+========================================================= */
+
+.networkSearch {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    padding: 7px 10px;
+
+    border:
+        1px solid rgba(255,255,255,.07);
+
+    border-radius: 8px;
+
+    background:
+        rgba(255,255,255,.025);
+
+    color: #687087;
+}
+
+.networkSearch input {
+    width: 150px;
+
+    border: 0;
+    outline: 0;
+
+    color: white;
+
+    background: transparent;
+
+    font-size: 9px;
+}
+
+.networkSearch input::placeholder {
+    color: #5b6277;
+}
+
+.networkHeader,
+.networkFileRow {
+    display: grid;
+
+    grid-template-columns:
+        minmax(180px, 2fr)
+        .7fr
+        .7fr
+        1fr;
+
+    align-items: center;
+}
+
+.networkHeader {
+    padding: 8px 12px;
+
+    color: #555c71;
+
+    font-size: 7px;
+
+    letter-spacing: 1.3px;
+
+    border-bottom:
+        1px solid rgba(255,255,255,.06);
+}
+
+.networkFileList {
+    border:
+        1px solid rgba(255,255,255,.06);
+
+    border-radius: 11px;
+
+    overflow: hidden;
+
+    background:
+        rgba(255,255,255,.018);
+}
+
+.networkFileRow {
+    padding: 10px 12px;
+
+    border-bottom:
+        1px solid rgba(255,255,255,.045);
+
+    color: #9aa1b7;
+
+    font-size: 9px;
+
+    transition:
+        background .15s;
+}
+
+.networkFileRow:last-child {
+    border-bottom: 0;
+}
+
+.networkFileRow:hover {
+    background:
+        rgba(119,94,255,.065);
+}
+
+.networkFileName {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    color: #e2e5ef;
+
+    font-weight: 700;
+
+    min-width: 0;
+}
+
+.networkFileName span:last-child {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.networkIcon {
+    width: 25px;
+    height: 25px;
+
+    flex-shrink: 0;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 7px;
+
+    background:
+        rgba(122,95,255,.08);
+}
+
+.networkType {
+    color: #8e97b0;
+}
+
+.networkSize {
+    color: #727a91;
+
+    font-family:
+        "SFMono-Regular",
+        Consolas,
+        monospace;
+}
+
+.networkLocation {
+    color: #646c82;
+}
+
+.networkEmpty {
+    padding: 45px 20px;
+
+    text-align: center;
+
+    color: #5f667b;
+}
+
+
+/* =========================================================
+   CODE STATUS
+========================================================= */
+
+.codeSavedGlow {
+    animation:
+        savedFlash .7s ease;
+}
+
+@keyframes savedFlash {
+
+    0% {
+        box-shadow:
+            inset 0 0 0 1px
+            rgba(110,255,164,.8);
+    }
+
+    100% {
+        box-shadow:
+            inset 0 0 0 1px
+            rgba(110,255,164,0);
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 850px) {
+
+    .codeToolbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .networkHeader,
+    .networkFileRow {
+        grid-template-columns:
+            minmax(130px, 2fr)
+            .7fr
+            .7fr;
+
+    }
+
+    .networkHeader span:nth-child(4),
+    .networkLocation {
+        display: none;
+    }
+
+}

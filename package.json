@@ -1,0 +1,69 @@
+{
+  "name": "codeos",
+  "version": "0.1.0",
+  "description": "CodeOS desktop application",
+  "main": "main.js",
+  "author": "CodeOS",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "devDependencies": {
+    "electron": "^39.0.0",
+    "electron-builder": "^26.0.20"
+  },
+  "build": {
+  "appId": "com.codeos.desktop",
+  "productName": "CodeOS",
+
+  "artifactName": "CodeOS-Setup-${version}.${ext}",
+
+  "directories": {
+    "output": "dist"
+  },
+
+  "files": [
+    "../**/*",
+    "!../node_modules/**/*",
+    "!../desktop-app/node_modules/**/*",
+    "!../dist/**/*",
+    "!../.git/**/*",
+    "!../backend/node_modules/**/*"
+  ],
+
+  "win": {
+    "target": [
+      {
+        "target": "nsis",
+        "arch": [
+          "x64"
+        ]
+      }
+    ]
+  },
+
+  "nsis": {
+
+    "oneClick": false,
+
+    "allowToChangeInstallationDirectory": true,
+
+    "createDesktopShortcut": true,
+
+    "createStartMenuShortcut": true,
+
+    "shortcutName": "CodeOS",
+
+    "perMachine": false,
+
+    "runAfterFinish": true
+
+  }
+
+},
+
+  "allowScripts": {
+    "electron@39.8.10": true
+  }
+}

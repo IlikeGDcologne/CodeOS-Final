@@ -1,0 +1,1115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>CodeOS Community</title>
+
+    <link rel="stylesheet" href="community.css" />
+  </head>
+
+  <body>
+    <!-- =================================
+         SIDEBAR
+    ================================= -->
+
+    <aside class="sidebar">
+      <div
+        class="sidebarLogo"
+        role="button"
+        tabindex="0"
+        onclick="window.location.href = 'index.html'"
+        onkeydown="
+          if (event.key === 'Enter' || event.key === ' ')
+            window.location.href = 'index.html';
+        "
+      >
+        <div class="logoIcon">⚡</div>
+        <span>CodeOS</span>
+      </div>
+
+      <nav class="sidebarNav">
+        <button class="navItem active" data-page="home">
+          <span>🏠</span>
+          <label>Home</label>
+        </button>
+
+        <button class="navItem" data-page="projects">
+          <span>🚀</span>
+          <label>Projects</label>
+        </button>
+
+        <button class="navItem" data-page="groups">
+          <span>👥</span>
+          <label>Groups</label>
+        </button>
+
+        <button class="navItem" data-page="discuss">
+          <span>💬</span>
+          <label>Discuss</label>
+        </button>
+
+        <button class="navItem" data-page="challenges">
+          <span>⚔️</span>
+          <label>Challenges</label>
+        </button>
+
+        <button class="navItem" data-page="notifications">
+          <span>🔔</span>
+          <label>Notifications</label>
+        </button>
+
+        <button class="navItem" data-page="awards">
+          <span>🏆</span>
+          <label>Awards</label>
+        </button>
+
+        <button
+          id="moderatorsNavItem"
+          class="navItem hidden"
+          data-page="moderators"
+        >
+          <span>💎</span>
+          <label>Moderators</label>
+        </button>
+
+        <div class="sidebarDivider"></div>
+
+        <div class="sidebarDivider"></div>
+
+        <button class="navItem" data-page="extensions">
+          <span>⚡</span>
+          <label>Extensions</label>
+        </button>
+
+        <button class="navItem" data-page="profile">
+          <span>👤</span>
+          <label>My Profile</label>
+        </button>
+
+        <button class="navItem" data-page="settings">
+          <span>⚙️</span>
+          <label>Settings</label>
+        </button>
+      </nav>
+
+      <div class="sidebarBottom">
+        <div class="onlineDot"></div>
+
+        <span>CodeOS Community</span>
+      </div>
+    </aside>
+
+    <!-- =================================
+         MAIN
+    ================================= -->
+
+    <div class="app">
+      <!-- TOP BAR -->
+
+      <header class="topbar">
+        <div class="mobileLogo">⚡ CodeOS</div>
+
+        <div class="pageTitle">
+          <h1 id="pageTitle">Home</h1>
+
+          <span> The CodeOS community </span>
+        </div>
+
+        <div class="topActions">
+          <div class="search">
+            <span>🔍</span>
+
+            <input id="communitySearch" placeholder="Search Community..." />
+          </div>
+
+          <div class="notificationBellWrapper">
+            <button id="notificationBell" class="topIcon" type="button">
+              🔔
+
+              <span id="notificationBadge" class="notificationBadge hidden">
+                0
+              </span>
+            </button>
+
+            <div id="notificationPopup" class="notificationPopup hidden">
+              <div class="notificationPopupHeader">
+                <div>
+                  <strong>Notifications</strong>
+                  <span>Recent activity</span>
+                </div>
+
+                <button id="viewAllNotifications" type="button">
+                  View all
+                </button>
+              </div>
+
+              <div
+                id="notificationPopupList"
+                class="notificationPopupList"
+              ></div>
+            </div>
+          </div>
+
+          <button id="loginBtn" class="profileButton">👤 Login</button>
+
+          <button id="logoutBtn" class="profileButton hidden">🚪 Logout</button>
+        </div>
+      </header>
+
+      <!-- =================================
+             CONTENT
+        ================================= -->
+
+      <main class="content">
+        <!-- HOME -->
+
+        <section id="homePage" class="page activePage">
+          <div class="welcome">
+            <div>
+              <span class="eyebrow"> 👋 Welcome back </span>
+
+              <h2>What's happening in CodeOS?</h2>
+
+              <p>Build. Share. Discuss. Create something awesome.</p>
+            </div>
+
+            <div class="welcomeOrb">⚡</div>
+          </div>
+
+          <!-- POST COMPOSER -->
+
+          <section class="composer">
+            <div class="composerTop">
+              <div class="composerAvatar">👤</div>
+
+              <textarea
+                id="postInput"
+                placeholder="Share something with the community..."
+              ></textarea>
+            </div>
+
+            <!-- TYPE-SPECIFIC COMPOSER -->
+            <div id="postTypeComposer" class="postTypeComposer hidden"></div>
+
+            <!-- PROJECT COMPOSER -->
+            <div id="projectComposer" class="projectComposer hidden">
+              <div class="projectComposerHeader">
+                <div class="projectComposerIcon">🚀</div>
+
+                <div>
+                  <h3>Create a Project Post</h3>
+                  <p>Show the community what you've built.</p>
+                </div>
+              </div>
+
+              <div class="projectField">
+                <label>Project title</label>
+                <input
+                  id="projectNameInput"
+                  type="text"
+                  placeholder="My awesome project..."
+                  maxlength="100"
+                />
+              </div>
+
+              <div class="projectField">
+                <label>Description</label>
+                <textarea
+                  id="projectDescriptionInput"
+                  placeholder="What does your project do?"
+                  maxlength="1000"
+                ></textarea>
+              </div>
+
+              <div class="projectField">
+                <label>Project image URL</label>
+                <input
+                  id="projectImageInput"
+                  type="url"
+                  placeholder="https://..."
+                />
+              </div>
+
+              <div class="projectField">
+                <label>Project link</label>
+                <input
+                  id="projectLinkInput"
+                  type="url"
+                  placeholder="https://your-project.com"
+                />
+              </div>
+
+              <button
+                id="chooseCodeOSProjectBtn"
+                type="button"
+                class="chooseCodeOSProjectBtn"
+              >
+                💻 Choose CodeOS Project
+              </button>
+
+              <div
+                id="selectedCodeOSProject"
+                class="selectedCodeOSProject hidden"
+              ></div>
+            </div>
+
+            <div class="composerBottom">
+              <div class="postTypes">
+                <select id="postType">
+                  <option value="post">📢 Post</option>
+
+                  <option value="project">🚀 Project</option>
+
+                  <option value="idea">💡 Idea</option>
+
+                  <option value="question">❓ Question</option>
+
+                  <option value="poll">📊 Poll</option>
+
+                  <option value="achievement">🏆 Achievement</option>
+
+                  <option value="discussion">💬 Discussion</option>
+
+                  <option value="tutorial">📚 Tutorial</option>
+
+                  <option value="showcase">🎨 Showcase</option>
+
+                  <option value="challenge">⚔️ Challenge</option>
+                </select>
+              </div>
+
+              <button id="postBtn" class="publishBtn">Publish 🚀</button>
+            </div>
+          </section>
+
+          <!-- FEED -->
+
+          <div class="feedHeader">
+            <div>
+              <h2>Community Feed</h2>
+
+              <span> Latest from CodeOS </span>
+            </div>
+
+            <button class="sortButton">✨ Recent</button>
+          </div>
+
+          <section id="feed">
+            <div class="empty">🚀 Loading community...</div>
+          </section>
+        </section>
+
+        <!-- =================================
+                 PLACEHOLDER PAGES
+            ================================= -->
+
+        <section id="projectsPage" class="page">
+          <div class="sectionHero">
+            <span>🚀</span>
+
+            <div>
+              <h2>Projects</h2>
+              <p>Discover what the community is building.</p>
+            </div>
+          </div>
+
+          <div class="filterBar">
+            <div class="projectSearchBox">
+              🔎
+              <input
+                id="projectSearchInput"
+                type="search"
+                placeholder="Search community projects..."
+                autocomplete="off"
+              />
+            </div>
+
+            <button class="filter active" data-filter="all">All</button>
+
+            <button class="filter" data-filter="recent">🆕 Recent</button>
+
+            <button class="filter" data-filter="awarded">🏆 Awarded</button>
+
+            <button class="filter" data-filter="trending">🔥 Trending</button>
+
+            <button class="filter" data-filter="liked">❤️ Most Liked</button>
+
+            <button class="filter" data-filter="loved">💗 Most Loved</button>
+
+            <button class="filter" data-filter="staff">👑 Staff Picks</button>
+          </div>
+
+          <div class="comingSoon">🚀 Project discovery is coming next.</div>
+        </section>
+
+        <section id="groupsPage" class="page">
+          <div class="sectionHero">
+            <span>👥</span>
+
+            <div>
+              <h2>Groups</h2>
+              <p>Build communities around the things you love.</p>
+            </div>
+          </div>
+
+          <!-- GROUP ACTIONS -->
+
+          <div class="groupActions">
+            <button
+              id="createPrivateGroupBtn"
+              class="groupActionCard private"
+              type="button"
+            >
+              <div class="groupActionIcon">🔒</div>
+
+              <div>
+                <h3>Create Private Group</h3>
+                <p>Make a space just for your invited members.</p>
+              </div>
+
+              <span class="groupActionArrow"> → </span>
+            </button>
+
+            <button
+              id="createPublicGroupBtn"
+              class="groupActionCard public"
+              type="button"
+            >
+              <div class="groupActionIcon">🌎</div>
+
+              <div>
+                <h3>Create Public Group</h3>
+                <p>Let the CodeOS community discover and join.</p>
+              </div>
+
+              <span class="groupActionArrow"> → </span>
+            </button>
+          </div>
+
+          <!-- SEARCH PUBLIC GROUPS -->
+
+          <div class="groupSearchBox">
+            <div>
+              <h2>🔎 Discover Groups</h2>
+
+              <p>Find public communities to join.</p>
+            </div>
+
+            <input
+              id="groupSearchInput"
+              type="search"
+              placeholder="Search public groups..."
+            />
+          </div>
+
+          <!-- YOUR GROUPS -->
+
+          <div class="groupsSection">
+            <div class="groupsSectionHeader">
+              <div>
+                <h2>✨ Your Groups</h2>
+
+                <p>Communities you're part of.</p>
+              </div>
+
+              <span id="yourGroupCount"> 0 groups </span>
+            </div>
+
+            <div id="yourGroupsGrid" class="groupsGrid"></div>
+          </div>
+
+          <!-- PUBLIC GROUP DISCOVERY -->
+
+          <div class="groupsSection">
+            <div class="groupsSectionHeader">
+              <div>
+                <h2>🌎 Public Groups</h2>
+
+                <p>Discover something new.</p>
+              </div>
+            </div>
+
+            <div id="publicGroupsGrid" class="groupsGrid"></div>
+          </div>
+        </section>
+
+        <section id="discussPage" class="page">
+          <div class="sectionHero">
+            <span>💬</span>
+
+            <div>
+              <h2>Discuss</h2>
+              <p>Talk about CodeOS, programming and projects.</p>
+            </div>
+          </div>
+
+          <div class="comingSoon">💬 Discussions are coming next.</div>
+        </section>
+
+        <section id="challengesPage" class="page">
+          <div class="sectionHero">
+            <span>🏆</span>
+
+            <div>
+              <h2>Challenges</h2>
+              <p>Compete, create, and earn glory.</p>
+            </div>
+
+            <div class="challengePageActions">
+              <button
+                id="addOfficialChallengeBtn"
+                class="challengePrimaryButton"
+                type="button"
+              >
+                🏆 Add Official Challenge
+              </button>
+            </div>
+          </div>
+
+          <div class="challengeTabs">
+            <button
+              class="challengeTab active"
+              data-challenge-tab="official"
+              type="button"
+            >
+              🏆 Official
+            </button>
+
+            <button
+              class="challengeTab"
+              data-challenge-tab="community"
+              type="button"
+            >
+              🗣️ Community
+            </button>
+          </div>
+
+          <div id="officialChallengesList" class="challengesList"></div>
+
+          <div id="communityChallengesList" class="challengesList hidden"></div>
+        </section>
+
+        <section id="notificationsPage" class="page">
+          <div class="sectionHero">
+            <span>🔔</span>
+
+            <div>
+              <h2>Notifications</h2>
+
+              <p>Requests, invitations and community activity.</p>
+            </div>
+          </div>
+
+          <div id="notificationsList" class="notificationsList">
+            <div class="notificationsEmpty">
+              <div class="notificationsEmptyIcon">🔔</div>
+
+              <h3>No notifications yet</h3>
+
+              <p>You're all caught up!</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="awardsPage" class="page">
+          <div class="sectionHero">
+            <span>🏆</span>
+            <div>
+              <h2>Awards</h2>
+              <p>
+                Earn achievements, collect rare awards, and enter the CodeOS
+                Hall of Fame.
+              </p>
+            </div>
+
+            <button
+              id="openAwardManagerBtn"
+              class="awardManagerButton hidden"
+              type="button"
+            >
+              💎 Award Manager
+            </button>
+          </div>
+
+          <div id="cfAwardsShrine"></div>
+        </section>
+
+        <section id="moderatorsPage" class="page">
+          <div class="sectionHero">
+            <span>💎</span>
+            <div>
+              <h2>Moderators</h2>
+              <p>Manage and moderate the CodeOS community.</p>
+            </div>
+          </div>
+
+          <!-- 👑 ELDER MODERATOR MANAGEMENT -->
+          <div id="elderModeratorTools" class="moderatorSection hidden">
+            <div class="moderatorSectionHeader">
+              <div>
+                <h2>👑 Moderator Management</h2>
+                <p>Search community members and manage moderators.</p>
+              </div>
+            </div>
+
+            <div class="moderatorSearch">
+              <input
+                id="moderatorUserSearch"
+                type="search"
+                placeholder="🔎 Search people..."
+              />
+
+              <button id="moderatorSearchBtn" type="button">Search</button>
+            </div>
+
+            <div
+              id="moderatorSearchResults"
+              class="moderatorSearchResults"
+            ></div>
+
+            <div class="moderatorSectionHeader">
+              <div>
+                <h2>🛡️ Current Moderators</h2>
+                <p>People who currently have moderator permissions.</p>
+              </div>
+            </div>
+
+            <div id="currentModeratorsList" class="currentModeratorsList"></div>
+          </div>
+
+          <!-- 🛡️ MODERATION MANAGEMENT -->
+          <div id="moderationTools" class="moderatorSection">
+            <div class="moderatorSectionHeader">
+              <div>
+                <h2>🛡️ Moderation Management</h2>
+                <p>Tools available to CodeOS moderators.</p>
+              </div>
+            </div>
+
+            <!-- FEATURE PROJECT -->
+            <div class="moderatorToolCard">
+              <div class="moderatorToolIcon">🌟</div>
+
+              <div class="moderatorToolInfo">
+                <h3>Featured Projects</h3>
+                <p>Choose projects to feature in the community.</p>
+              </div>
+
+              <button id="moderatorFeaturedProjectsBtn" type="button">
+                Manage
+              </button>
+            </div>
+
+            <!-- RATE PROJECTS -->
+            <div class="moderatorToolCard">
+              <div class="moderatorToolIcon">⭐</div>
+
+              <div class="moderatorToolInfo">
+                <h3>Rate Projects</h3>
+                <p>Give community projects a rating from 1–5 stars.</p>
+              </div>
+
+              <button id="moderatorRateProjectsBtn" type="button">Rate</button>
+            </div>
+
+            <!-- BAN ACCOUNTS -->
+            <div class="moderatorToolCard">
+              <div class="moderatorToolIcon">🚫</div>
+
+              <div class="moderatorToolInfo">
+                <h3>Ban Accounts</h3>
+                <p>Restrict accounts that violate community rules.</p>
+              </div>
+
+              <button id="moderatorBanAccountsBtn" type="button">Manage</button>
+            </div>
+
+            <!-- IMPERSONATE -->
+            <div class="moderatorToolCard">
+              <div class="moderatorToolIcon">👤</div>
+
+              <div class="moderatorToolInfo">
+                <h3>Impersonate Account</h3>
+                <p>
+                  Enter a temporary account view for testing and moderation.
+                </p>
+              </div>
+
+              <button id="moderatorImpersonateBtn" type="button">Open</button>
+            </div>
+
+            <!-- TEST ACCOUNTS -->
+            <div class="moderatorToolCard">
+              <div class="moderatorToolIcon">🧪</div>
+
+              <div class="moderatorToolInfo">
+                <h3>Test Accounts</h3>
+                <p>Create temporary accounts for testing CodeOS Community.</p>
+              </div>
+
+              <button id="moderatorTestAccountsBtn" type="button">
+                Create
+              </button>
+            </div>
+            <div class="moderatorToolCard">
+              <button
+                id="moderatorChooseChallengeWinnerBtn"
+                type="button"
+                class="moderatorPrimaryButton"
+              >
+                👑 Choose Challenge Winner
+              </button>
+            </div>
+            <button
+              id="moderatorSendNotificationBtn"
+              type="button"
+              class="moderatorPrimaryButton"
+            >
+              ✉️ Send Notification
+            </button>
+          </div>
+        </section>
+
+        <section id="extensionsPage" class="page">
+          <div class="sectionHero">
+            <span>⚡</span>
+
+            <div>
+              <h2>Extensions</h2>
+              <p>
+                Install new CodeOS commands, tools, themes and functionality.
+              </p>
+            </div>
+
+            <button
+              id="createExtensionBtn"
+              class="extensionCreateButton"
+              type="button"
+            >
+              ➕ Create Extension
+            </button>
+          </div>
+
+          <div id="extensionStatsBar" class="extensionStatsBar"></div>
+
+          <div class="extensionToolbar">
+            <div class="extensionSearchWrap">
+              🔎
+              <input
+                id="extensionSearchInput"
+                type="search"
+                placeholder="Search extensions..."
+              />
+            </div>
+
+            <select id="extensionCategoryFilter">
+              <option value="all">All Categories</option>
+
+              <option value="developer">Developer</option>
+
+              <option value="productivity">Productivity</option>
+
+              <option value="design">Design</option>
+
+              <option value="education">Education</option>
+
+              <option value="games">Games</option>
+
+              <option value="utilities">Utilities</option>
+
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="extensionTabs">
+            <button class="extensionTab active" data-extension-filter="all">
+              ✨ All
+            </button>
+
+            <button class="extensionTab" data-extension-filter="installed">
+              📦 Installed
+            </button>
+
+            <button class="extensionTab" data-extension-filter="mine">
+              👤 My Extensions
+            </button>
+
+            <button class="extensionTab" data-extension-filter="popular">
+              🔥 Popular
+            </button>
+
+            <button class="extensionTab" data-extension-filter="new">
+              🆕 New
+            </button>
+          </div>
+
+          <div id="extensionsGrid" class="extensionsGrid"></div>
+        </section>
+
+        <section id="profilePage" class="page">
+          <div class="profileHero">
+            <div class="profileCover"></div>
+
+            <div class="profileMain">
+              <div class="profileAvatar" id="profileAvatar">👤</div>
+
+              <div class="profileInfo">
+                <div class="profileNameRow">
+                  <h2 id="profileName">Your Name</h2>
+                  <span id="profileRole" class="profileRole"> Member </span>
+                </div>
+
+                <p id="profileBio">Welcome to my CodeOS profile! 🚀</p>
+
+                <div class="profileMeta">
+                  <span id="profileJoined">📅 Joined recently</span>
+                  <span>⚡ CodeOS Community</span>
+                </div>
+              </div>
+
+              <button id="editProfileBtn" class="editProfileBtn">
+                ✏️ Edit Profile
+              </button>
+            </div>
+          </div>
+
+          <div class="profileStats">
+            <div class="statCard">
+              <strong id="profilePostCount">0</strong>
+              <span>Posts</span>
+            </div>
+
+            <div class="statCard">
+              <strong id="profileLikes">0</strong>
+              <span>Likes</span>
+            </div>
+
+            <div class="statCard">
+              <strong id="profileLoves">0</strong>
+              <span>Loves</span>
+            </div>
+
+            <div class="statCard">
+              <strong id="profileBadgeCount">0</strong>
+              <span>Badges</span>
+            </div>
+
+            <div class="statCard statusStatCard">
+              <strong id="profileStatus">Member</strong>
+              <span>Status</span>
+            </div>
+          </div>
+
+          <div class="profileSection">
+            <div class="profileSectionHeader">
+              <div>
+                <h2>🏅 Badges</h2>
+                <p>Your achievements in the CodeOS community.</p>
+              </div>
+            </div>
+
+            <div id="profileBadges" class="profileBadges">
+              <div class="noBadges">No badges yet. Keep building! 🚀</div>
+            </div>
+          </div>
+
+          <div class="profileSection">
+            <div class="profileSectionHeader">
+              <div>
+                <h2>📝 Your Posts</h2>
+                <p>Everything you've shared with the community.</p>
+              </div>
+            </div>
+
+            <div id="profilePosts" class="profilePosts">
+              <div class="noBadges">No posts yet.</div>
+            </div>
+          </div>
+        </section>
+
+        <section id="publicProfilePage" class="page">
+          <div class="publicProfile">
+            <button id="backFromProfile" class="backButton">← Back</button>
+
+            <div class="publicProfileHeader">
+              <img
+                id="publicProfileAvatar"
+                class="publicProfileAvatar"
+                src=""
+                alt="Profile"
+              />
+
+              <div class="publicProfileInfo">
+                <h2 id="publicProfileName">User</h2>
+
+                <div id="publicProfileRole">Member</div>
+
+                <p id="publicProfileBio">No bio yet.</p>
+              </div>
+            </div>
+
+            <div class="publicProfileStats">
+              <div>
+                <strong id="publicPostCount">0</strong>
+                <span>Posts</span>
+              </div>
+
+              <div>
+                <strong id="publicProjectCount">0</strong>
+                <span>Projects</span>
+              </div>
+
+              <div>
+                <strong id="publicLikeCount">0</strong>
+                <span>Likes</span>
+              </div>
+            </div>
+
+            <div class="publicProfileBadges">
+              <h3>🏅 Badges</h3>
+
+              <div id="publicBadges">
+                <span>No badges yet.</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="settingsPage" class="page">
+          <div class="sectionHero">
+            <span>⚙️</span>
+
+            <div>
+              <h2>Settings</h2>
+              <p>Customize your CodeOS experience.</p>
+            </div>
+          </div>
+
+          <div class="settingsContent">
+            <!-- APPEARANCE -->
+            <section class="settingsSection">
+              <h3>🎨 Appearance</h3>
+
+              <div class="settingRow">
+                <div>
+                  <strong>Theme</strong>
+                  <p>Choose how CodeOS looks.</p>
+                </div>
+
+                <select id="themeSetting">
+                  <option value="dark">Dark</option>
+                </select>
+              </div>
+
+              <div class="settingRow">
+                <div>
+                  <strong>Accent Colour</strong>
+                  <p>Choose CodeOS's accent colour.</p>
+                </div>
+
+                <input id="accentColourSetting" type="color" value="#7c5cff" />
+              </div>
+
+              <div class="settingRow">
+                <div>
+                  <strong>UI Density</strong>
+                  <p>Control the spacing of the interface.</p>
+                </div>
+
+                <select id="uiDensitySetting">
+                  <option value="comfortable">Comfortable</option>
+                  <option value="compact">Compact</option>
+                  <option value="spacious">Spacious</option>
+                </select>
+              </div>
+
+              <div class="settingRow">
+                <div>
+                  <strong>Animations</strong>
+                  <p>Enable or disable interface animations.</p>
+                </div>
+
+                <label class="settingsSwitch">
+                  <input id="animationsSetting" type="checkbox" checked />
+                  <span></span>
+                </label>
+              </div>
+            </section>
+
+            <!-- NOTIFICATIONS -->
+            <section class="settingsSection">
+              <h3>🔔 Notifications</h3>
+
+              <div class="settingRow">
+                <div>
+                  <strong>Allow Notifications</strong>
+                  <p>Allow CodeOS to show notifications.</p>
+                </div>
+
+                <label class="settingsSwitch">
+                  <input id="notificationsSetting" type="checkbox" checked />
+                  <span></span>
+                </label>
+              </div>
+            </section>
+
+            <!-- PRIVACY -->
+            <section class="settingsSection">
+              <h3>🔒 Privacy</h3>
+
+              <button id="blockedUsersBtn" type="button" class="settingsAction">
+                <span>
+                  <strong>🚫 Blocked Users</strong>
+                  <small>Manage users you've blocked.</small>
+                </span>
+
+                <span>→</span>
+              </button>
+            </section>
+
+            <!-- DANGER ZONE -->
+            <section class="settingsSection dangerSection">
+              <h3>⚠️ Danger Zone</h3>
+
+              <button
+                id="resetSettingsBtn"
+                type="button"
+                class="settingsAction danger"
+              >
+                <span>
+                  <strong>♻️ Reset All Settings</strong>
+                  <small> Restore CodeOS settings to their defaults. </small>
+                </span>
+
+                <span>→</span>
+              </button>
+
+              <button
+                id="deleteAccountBtn"
+                type="button"
+                class="settingsAction danger"
+              >
+                <span>
+                  <strong>🗑️ Delete Account</strong>
+                  <small> Permanently delete your CodeOS account. </small>
+                </span>
+
+                <span>→</span>
+              </button>
+            </section>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- =================================
+         LOGIN MODAL
+    ================================= -->
+
+    <div id="loginModal" class="modal hidden">
+      <div class="modalBox">
+        <button id="closeLogin" class="closeModal">✕</button>
+
+        <div class="modalIcon">⚡</div>
+
+        <h2>Join CodeOS Community</h2>
+
+        <p>Sign in to post, like and interact.</p>
+
+        <button id="googleLogin" class="googleButton">
+          🌐 Continue with Google
+        </button>
+
+        <div class="dividerText">OR</div>
+
+        <input id="email" type="email" placeholder="Email" />
+
+        <input id="password" type="password" placeholder="Password" />
+
+        <div class="authButtons">
+          <button id="emailLogin">Login</button>
+
+          <button id="emailSignup">Create Account</button>
+        </div>
+
+        <div id="authStatus" class="authStatus"></div>
+      </div>
+    </div>
+
+    <div id="profileModal" class="modal hidden">
+      <div class="modalBox profileEditor">
+        <button id="closeProfileModal" class="closeModal">✕</button>
+
+        <div class="modalIcon">👤</div>
+
+        <h2>Edit Profile</h2>
+
+        <p>Customize your CodeOS identity.</p>
+
+        <input
+          id="profileUsername"
+          type="text"
+          placeholder="Username"
+          maxlength="30"
+        />
+
+        <textarea
+          id="profileBioInput"
+          placeholder="Tell the community about yourself..."
+          maxlength="160"
+        ></textarea>
+
+        <input
+          id="profileAvatarInput"
+          type="text"
+          placeholder="Profile image URL"
+        />
+
+        <button id="saveProfileBtn" class="saveProfileBtn">
+          💾 Save Profile
+        </button>
+
+        <div id="profileSaveStatus" class="authStatus"></div>
+      </div>
+    </div>
+
+    <!-- =========================================
+     💻 CODEOS PROJECT PICKER
+========================================= -->
+
+    <div id="projectPickerOverlay" class="modal hidden">
+      <div class="projectPickerBox">
+        <button id="closeProjectPicker" class="closeModal" type="button">
+          ✕
+        </button>
+
+        <div class="projectPickerHeader">
+          <div class="projectPickerIcon">💻</div>
+
+          <div>
+            <h2>Choose a CodeOS Project</h2>
+            <p>Select a workspace to attach to your project.</p>
+          </div>
+        </div>
+
+        <input
+          id="projectPickerSearch"
+          class="projectPickerSearch"
+          type="text"
+          placeholder="🔎 Search your projects..."
+        />
+
+        <div id="projectPickerList" class="projectPickerList"></div>
+      </div>
+    </div>
+
+    <script type="module" src="community.js"></script>
+    <script type="module" src="community_awards_extensions.js"></script>
+    <script type="module" src="codeos_extensions.js"></script>
+    <script type="module" src="community_search.js"></script>
+    <script type="module" src="community_badges.js"></script>
+  </body>
+</html>

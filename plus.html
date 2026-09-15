@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>CDX Plus+ — CodeOS</title>
+
+    <link rel="stylesheet" href="plus.css" />
+  </head>
+
+  <body>
+    <div class="ambient ambient-1"></div>
+    <div class="ambient ambient-2"></div>
+    <div class="ambient ambient-3"></div>
+
+    <div id="particles"></div>
+
+    <header class="topbar">
+      <div class="brand" onclick="location.href = 'index.html'">
+        <div class="brandIcon">👾</div>
+        <div>
+          <div class="brandName">CodeOS</div>
+          <div class="brandSub">CDX PLUS+</div>
+        </div>
+      </div>
+
+      <nav>
+        <a href="#features">Features</a>
+        <a href="#plans">Plans</a>
+        <a href="#devtools">DevTools</a>
+      </nav>
+
+      <button class="navButton" id="accountButton">Account</button>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section class="hero">
+        <div class="heroBadge">
+          <span class="pulseDot"></span>
+          THE ULTIMATE CODEOS EXPERIENCE
+        </div>
+
+        <h1>
+          Welcome to
+          <span>CDX Plus+</span>
+        </h1>
+
+        <p class="heroText">
+          Supercharge CodeOS with better AI, AI-powered editing, DevTools
+          access, exclusive identity features and more.
+        </p>
+
+        <div class="heroActions">
+          <button class="primaryButton" id="heroSubscribe">
+            <span>Become a Plus+ Member</span>
+            <span>→</span>
+          </button>
+
+          <button class="secondaryButton" id="heroDevTools">🛠️ DevTools</button>
+        </div>
+
+        <div class="heroGlowCard">
+          <div class="miniWindowTop">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+
+          <div class="heroTerminal">
+            <div class="terminalLine">
+              <span class="terminalPrompt">CDX</span>
+              <span>initializing_plus()</span>
+            </div>
+
+            <div class="terminalLine">
+              <span class="green">✓</span>
+              AI ENGINE UNLOCKED
+            </div>
+
+            <div class="terminalLine">
+              <span class="green">✓</span>
+              DEVTOOLS ACCESS
+            </div>
+
+            <div class="terminalLine">
+              <span class="green">✓</span>
+              PLUS+ IDENTITY
+            </div>
+
+            <div class="terminalLine">
+              <span class="purple">&gt;</span>
+              <span class="typing">welcome_to_cdx_plus+</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FEATURES -->
+      <section id="features" class="section">
+        <div class="sectionHeading">
+          <div class="sectionEyebrow">WHY PLUS+</div>
+          <h2>More power. More CodeOS.</h2>
+          <p>Everything you need to take your projects further.</p>
+        </div>
+
+        <div class="featureGrid">
+          <div class="featureCard">
+            <div class="featureIcon">🤖</div>
+            <h3>Better AI</h3>
+            <p>
+              Escape the 2-message free limit and unlock unlimited CodeOS AI
+              conversations.
+            </p>
+            <span class="featureTag">UNLIMITED</span>
+          </div>
+
+          <div class="featureCard">
+            <div class="featureIcon">✏️</div>
+            <h3>AI Code Editing</h3>
+            <p>
+              Let CodeOS AI understand your project and make real edits to your
+              files.
+            </p>
+            <span class="featureTag">POWER TOOL</span>
+          </div>
+
+          <div class="featureCard">
+            <div class="featureIcon">🛠️</div>
+            <h3>CodeOS DevTools</h3>
+            <p>
+              Inspect running CodeOS projects with a completely custom developer
+              experience.
+            </p>
+            <span class="featureTag">PLUS+ ONLY</span>
+          </div>
+
+          <div class="featureCard">
+            <div class="featureIcon">🏅</div>
+            <h3>Community Badge</h3>
+            <p>
+              Show the CDX Plus+ badge next to your identity throughout CodeOS
+              Community.
+            </p>
+            <span class="featureTag">EXCLUSIVE</span>
+          </div>
+
+          <div class="featureCard">
+            <div class="featureIcon">👤</div>
+            <h3>Developer Identity</h3>
+            <p>
+              Reserve your Plus+ display name for DevTools and future CodeOS
+              features.
+            </p>
+            <span class="featureTag">IDENTITY</span>
+          </div>
+
+          <div class="featureCard">
+            <div class="featureIcon">⚡</div>
+            <h3>Future Features</h3>
+            <p>
+              Plus+ is also the gateway to upcoming premium CodeOS capabilities.
+            </p>
+            <span class="featureTag">COMING SOON</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- PLANS -->
+      <section id="plans" class="section plansSection">
+        <div class="sectionHeading">
+          <div class="sectionEyebrow">MEMBERSHIP</div>
+          <h2>Choose your level.</h2>
+          <p>
+            This prototype uses simulated payments. No real money is charged.
+          </p>
+        </div>
+
+        <div class="pricingGrid">
+          <div class="priceCard">
+            <div class="priceTop">
+              <span class="planLabel">FREE</span>
+            </div>
+
+            <h3>Explorer</h3>
+
+            <div class="price">
+              ₹0
+              <small>/ forever</small>
+            </div>
+
+            <div class="priceDivider"></div>
+
+            <div class="checkItem">✓ 2 AI messages</div>
+            <div class="checkItem">✓ CodeOS Workspace</div>
+            <div class="checkItem">✓ Community</div>
+            <div class="checkItem muted">× Unlimited AI</div>
+            <div class="checkItem muted">× DevTools</div>
+
+            <button class="planButton ghostButton">Current Free Tier</button>
+          </div>
+
+          <div class="priceCard featuredPrice">
+            <div class="popularRibbon">MOST POPULAR</div>
+
+            <div class="priceTop">
+              <span class="planLabel">CDX PLUS+</span>
+            </div>
+
+            <h3>Plus+</h3>
+
+            <div class="price">
+              ₹199
+              <small>/ month</small>
+            </div>
+
+            <div class="priceDivider"></div>
+
+            <div class="checkItem">✓ Unlimited AI</div>
+            <div class="checkItem">✓ AI Code Editing</div>
+            <div class="checkItem">✓ DevTools Access</div>
+            <div class="checkItem">✓ Plus+ Community Badge</div>
+            <div class="checkItem">✓ Developer Identity</div>
+
+            <button class="planButton primaryButton" id="subscribeMonthly">
+              Subscribe
+            </button>
+          </div>
+
+          <div class="priceCard lifetimeCard">
+            <div class="priceTop">
+              <span class="planLabel">LEGENDARY</span>
+            </div>
+
+            <h3>Lifetime</h3>
+
+            <div class="price">
+              ₹4,999
+              <small>/ once</small>
+            </div>
+
+            <div class="priceDivider"></div>
+
+            <div class="checkItem">✓ Everything in Plus+</div>
+            <div class="checkItem">✓ Lifetime access</div>
+            <div class="checkItem">✓ Lifetime identity</div>
+            <div class="checkItem">✓ DevTools access</div>
+            <div class="checkItem">✓ Future Plus+ features</div>
+
+            <button class="planButton secondaryButton" id="subscribeLifetime">
+              Get Lifetime
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ACCOUNT -->
+      <section class="accountSection">
+        <div class="accountCard">
+          <div class="accountOrb">👑</div>
+
+          <div class="accountInfo">
+            <span class="accountEyebrow">YOUR CODEOS ACCOUNT</span>
+
+            <h3 id="accountStatusTitle">You're currently using CodeOS Free.</h3>
+
+            <p id="accountStatusText">
+              Upgrade to unlock the complete CodeOS ecosystem.
+            </p>
+          </div>
+
+          <div class="accountActions">
+            <button class="secondaryButton" id="devToolsCodeButton">
+              🔐 DevTools Code
+            </button>
+
+            <button class="dangerButton" id="unsubscribeButton">
+              Unsubscribe
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- DEVTOOLS -->
+      <section id="devtools" class="devtoolsPreview">
+        <div class="devtoolsPreviewGlow"></div>
+
+        <div class="previewText">
+          <div class="sectionEyebrow">CDX DEVTOOLS</div>
+
+          <h2>
+            Your project.
+            <span>Under the microscope.</span>
+          </h2>
+
+          <p>
+            Inspect CodeOS sprites, variables, runtime state, files, output and
+            more — with a developer interface built specifically for CDX.
+          </p>
+
+          <button class="primaryButton" id="openDevTools">
+            Open DevTools Portal →
+          </button>
+        </div>
+
+        <div class="devtoolsMock">
+          <div class="mockTop">
+            <div class="traffic">
+              <i></i>
+              <i></i>
+              <i></i>
+            </div>
+
+            <span>CodeOS DevTools</span>
+          </div>
+
+          <div class="mockBody">
+            <aside>
+              <div class="mockItem active">◈ Inspector</div>
+              <div class="mockItem">⌘ Code</div>
+              <div class="mockItem">👾 Sprites</div>
+              <div class="mockItem">📦 State</div>
+              <div class="mockItem">▣ Console</div>
+            </aside>
+
+            <div class="mockInspector">
+              <div class="inspectorHeader">
+                <span>Runtime Inspector</span>
+                <span class="liveDot">● LIVE</span>
+              </div>
+
+              <div class="inspectorBlock">
+                <small>PROJECT</small>
+                <strong>My Game</strong>
+              </div>
+
+              <div class="inspectorBlock">
+                <small>VARIABLE</small>
+                <strong>score</strong>
+                <code>42</code>
+              </div>
+
+              <div class="inspectorBlock">
+                <small>SPRITE</small>
+                <strong>hero</strong>
+                <code>x: 120 · y: 80</code>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div>👾 CodeOS</div>
+      <div>CDX Plus+ Prototype</div>
+      <div>Built for the future.</div>
+    </footer>
+
+    <!-- PAYMENT MODAL -->
+    <div class="modalOverlay hidden" id="paymentOverlay">
+      <div class="paymentModal">
+        <button class="closeModal" id="closePayment">✕</button>
+
+        <div class="paymentStep active" id="planStep">
+          <div class="modalIcon">👑</div>
+
+          <div class="modalEyebrow">CDX PLUS+</div>
+
+          <h2>Choose your membership</h2>
+
+          <p>Pick your simulated subscription.</p>
+
+          <div class="modalPlans">
+            <button class="modalPlan" data-plan="monthly">
+              <span>Monthly</span>
+              <strong>₹199</strong>
+              <small>per month</small>
+            </button>
+
+            <button class="modalPlan" data-plan="lifetime">
+              <span>Lifetime</span>
+              <strong>₹4,999</strong>
+              <small>one-time</small>
+            </button>
+          </div>
+
+          <button
+            class="primaryButton fullButton"
+            id="continuePayment"
+            disabled
+          >
+            Continue to Payment
+          </button>
+        </div>
+
+        <div class="paymentStep" id="payStep">
+          <div class="paymentLoader">
+            <div class="loaderRing"></div>
+
+            <div>
+              <div class="modalEyebrow">SECURE SIMULATION</div>
+
+              <h2 id="paymentStatus">Processing...</h2>
+
+              <p id="paymentSubtext">Encrypting imaginary payment data.</p>
+            </div>
+          </div>
+
+          <div class="paymentProgress">
+            <div id="paymentProgressFill"></div>
+          </div>
+        </div>
+
+        <div class="paymentStep" id="successStep">
+          <div class="successExplosion">✨</div>
+
+          <div class="modalEyebrow">WELCOME ABOARD</div>
+
+          <h2>You're officially Plus+.</h2>
+
+          <p>Your CodeOS account has been upgraded.</p>
+
+          <div class="successStats">
+            <div>
+              <strong>∞</strong>
+              <span>AI</span>
+            </div>
+
+            <div>
+              <strong>🛠️</strong>
+              <span>DevTools</span>
+            </div>
+
+            <div>
+              <strong>🏅</strong>
+              <span>Badge</span>
+            </div>
+          </div>
+
+          <button class="primaryButton fullButton" id="finishPayment">
+            Enter CodeOS Plus+
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- DEVTOOLS CODE MODAL -->
+    <div class="modalOverlay hidden" id="codeOverlay">
+      <div class="codeModal">
+        <button class="closeModal" id="closeCode">✕</button>
+
+        <div class="modalIcon">🔐</div>
+
+        <div class="modalEyebrow">DEVTOOLS ACCESS</div>
+
+        <h2>Your DevTools Secret Code</h2>
+
+        <p>This is your unique local prototype access code.</p>
+
+        <div class="secretCode" id="secretCode">D8Vdi2</div>
+
+        <div class="codeWarning">
+          <span>⚠</span>
+          Keep this code private.
+        </div>
+
+        <button class="primaryButton fullButton" id="copyCode">
+          Copy Code
+        </button>
+      </div>
+    </div>
+
+    <script src="codeos-plus.js"></script>
+    <script src="plus.js"></script>
+  </body>
+</html>

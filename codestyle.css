@@ -1,0 +1,822 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Inter,sans-serif;
+}
+
+body{
+
+    background:#0f172a;
+    color:white;
+
+}
+
+.navbar{
+
+    width:100%;
+    height:80px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:0 60px;
+
+    background:rgba(255,255,255,.05);
+
+    backdrop-filter:blur(18px);
+
+    position:sticky;
+
+    top:0;
+
+}
+
+.logo{
+
+    font-size:30px;
+
+    font-weight:700;
+
+    animation:logoGlow 4s ease-in-out infinite;
+
+}
+
+.navButtons{
+
+    display:flex;
+
+    gap:15px;
+
+}
+
+button{
+
+    padding:12px 22px;
+
+    border:none;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+button:hover{
+
+    transform:translateY(-3px);
+
+}
+
+.primary{
+    background:var(--codeos-accent);
+    color:white;
+}
+
+.secondary{
+
+    background:#1e293b;
+
+    color:white;
+
+}
+
+.hero{
+
+    height:80vh;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    gap:25px;
+
+}
+
+.hero h1{
+
+    font-size:70px;
+
+}
+
+.hero p{
+
+    width:700px;
+
+    color:#cbd5e1;
+
+    font-size:20px;
+
+    line-height:1.6;
+
+}
+
+.heroButtons{
+
+    display:flex;
+
+    gap:20px;
+
+}
+
+.cards{
+
+    width:90%;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+    gap:25px;
+
+    padding-bottom:80px;
+
+}
+
+.card{
+
+    background:#1e293b;
+
+    padding:35px;
+
+    border-radius:18px;
+
+    transition:.3s;
+
+    font-size:40px;
+
+}
+
+.card h2{
+
+    margin-top:20px;
+
+    font-size:28px;
+
+}
+
+.card p{
+
+    margin-top:12px;
+
+    color:#cbd5e1;
+
+    font-size:17px;
+
+}
+
+.card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+#backgroundCode{
+
+    position:fixed;
+
+    inset:0;
+
+    overflow:hidden;
+
+    z-index:-1;
+
+    pointer-events:none;
+
+}
+
+.codeLine{
+
+    position:absolute;
+
+    color:rgba(255,255,255,.06);
+
+    font-family:monospace;
+
+    font-size:22px;
+
+    white-space:nowrap;
+
+    animation:floatUp linear infinite;
+
+    user-select:none;
+
+    filter:blur(.4px);
+
+}
+
+@keyframes floatUp{
+
+    from{
+
+        transform:translateY(110vh);
+
+    }
+
+    to{
+
+        transform:translateY(-150px);
+
+    }
+
+}
+
+.particle{
+
+    position:fixed;
+
+    width:4px;
+
+    height:4px;
+
+    border-radius:50%;
+
+    background:var(--codeos-accent);
+
+    opacity:.25;
+
+    pointer-events:none;
+
+    animation:particleFloat linear infinite;
+
+}
+
+@keyframes particleFloat{
+
+    from{
+
+        transform:translateY(110vh);
+
+    }
+
+    to{
+
+        transform:translateY(-100px);
+
+    }
+
+}
+
+@keyframes logoGlow{
+
+    0%,100%{
+        text-shadow:none;
+    }
+
+    50%{
+        text-shadow:
+            0 0 8px var(--codeos-accent),
+            0 0 18px var(--codeos-accent),
+            0 0 35px var(--codeos-accent);
+    }
+
+}
+
+/* Overlay */
+
+#paletteOverlay{
+
+    position:fixed;
+    inset:0;
+
+    background:rgba(0,0,0,.45);
+
+    backdrop-filter:blur(12px);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:flex-start;
+
+    padding-top:120px;
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:.25s;
+
+    z-index:9999;
+
+}
+
+#paletteOverlay.show{
+
+    opacity:1;
+
+    visibility:visible;
+
+}
+
+/* Palette */
+
+#commandPalette{
+
+    width:700px;
+
+    background:#172033;
+
+    border-radius:22px;
+
+    overflow:hidden;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    box-shadow:
+        0 20px 70px rgba(0,0,0,.45);
+
+    transform:translateY(-30px) scale(.96);
+
+    transition:.3s;
+
+}
+
+#paletteOverlay.show #commandPalette{
+
+    transform:translateY(0) scale(1);
+
+}
+
+#commandInput{
+
+    width:100%;
+
+    padding:22px;
+
+    font-size:20px;
+
+    border:none;
+
+    outline:none;
+
+    background:#1f2b45;
+
+    color:white;
+
+}
+
+#commandInput::placeholder{
+
+    color:#94a3b8;
+
+}
+
+#commandList{
+
+    max-height:350px;
+
+    overflow:auto;
+
+}
+
+.command{
+
+    padding:18px 22px;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+    border-top:1px solid rgba(255,255,255,.05);
+
+}
+
+.command:hover{
+
+    background:#24334f;
+
+}
+
+.command.selected{
+    background:var(--codeos-accent);
+    color:white;
+}
+
+/* ==========================
+   Boot Screen
+========================== */
+
+#bootScreen{
+
+    position:fixed;
+
+    inset:0;
+
+    background:#08111f;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:999999;
+
+    transition:.8s;
+
+}
+
+#bootScreen.hide{
+
+    opacity:0;
+
+    visibility:hidden;
+
+}
+
+#bootContent{
+
+    width:450px;
+
+    text-align:center;
+
+}
+
+#bootLogo{
+
+    font-size:42px;
+
+    font-weight:700;
+
+    margin-bottom:12px;
+
+}
+
+#bootVersion{
+
+    color:#94a3b8;
+
+    margin-bottom:35px;
+
+}
+
+#bootStatus{
+
+    margin-bottom:15px;
+
+    font-size:18px;
+
+}
+
+#bootBar{
+
+    width:100%;
+
+    height:10px;
+
+    background:#1e293b;
+
+    border-radius:999px;
+
+    overflow:hidden;
+
+}
+
+#bootProgress{
+
+    width:0%;
+
+    height:100%;
+
+    background:var(--codeos-accent);
+
+    transition:.4s;
+
+}
+
+/* ==========================
+   ⚙️ SETTINGS
+========================== */
+
+#settingsOverlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0, 0, 0, .6);
+
+    backdrop-filter: blur(12px);
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition: .25s;
+
+    z-index: 10000;
+
+}
+
+
+#settingsOverlay.show {
+
+    opacity: 1;
+
+    visibility: visible;
+
+}
+
+
+#settingsPanel {
+
+    width: 650px;
+
+    max-width: 90vw;
+
+    max-height: 85vh;
+
+    overflow: auto;
+
+    background: #172033;
+
+    border: 1px solid rgba(255,255,255,.1);
+
+    border-radius: 22px;
+
+    box-shadow:
+        0 30px 100px rgba(0,0,0,.55);
+
+    transform:
+        translateY(20px)
+        scale(.96);
+
+    transition: .25s;
+
+}
+
+
+#settingsOverlay.show #settingsPanel {
+
+    transform:
+        translateY(0)
+        scale(1);
+
+}
+
+
+.settingsHeader {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 25px;
+
+    border-bottom:
+        1px solid rgba(255,255,255,.08);
+
+}
+
+
+.settingsHeader h2 {
+
+    font-size: 28px;
+
+}
+
+
+.settingsHeader p {
+
+    color: #94a3b8;
+
+    margin-top: 5px;
+
+}
+
+
+#closeSettings {
+
+    background: rgba(255,255,255,.06);
+
+    color: white;
+
+    font-size: 18px;
+
+    width: 40px;
+
+    height: 40px;
+
+    padding: 0;
+
+}
+
+
+#closeSettings:hover {
+
+    background: rgba(255,255,255,.12);
+
+}
+
+
+.settingsContent {
+
+    padding: 10px 25px 25px;
+
+}
+
+
+.settingsGroup {
+
+    padding: 20px 0;
+
+    border-bottom:
+        1px solid rgba(255,255,255,.07);
+
+}
+
+
+.settingsGroup:last-child {
+
+    border-bottom: none;
+
+}
+
+
+.settingsGroup h3 {
+
+    margin-bottom: 15px;
+
+    font-size: 18px;
+
+}
+
+
+.settingRow {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 15px;
+
+    border-radius: 14px;
+
+    transition: .2s;
+
+}
+
+
+.settingRow:hover {
+
+    background: rgba(255,255,255,.04);
+
+}
+
+
+.settingRow strong {
+
+    font-size: 16px;
+
+}
+
+
+.settingRow p {
+
+    color: #94a3b8;
+
+    font-size: 14px;
+
+    margin-top: 4px;
+
+}
+
+
+.settingRow select {
+
+    background: #1f2b45;
+
+    color: white;
+
+    border: 1px solid rgba(255,255,255,.1);
+
+    border-radius: 10px;
+
+    padding: 9px 12px;
+
+    outline: none;
+
+}
+
+
+.settingRow input[type="color"] {
+
+    width: 45px;
+
+    height: 35px;
+
+    border: none;
+
+    background: transparent;
+
+    cursor: pointer;
+
+}
+
+
+#resetSettings {
+
+    background: #ef4444;
+
+    color: white;
+
+}
+
+:root {
+    --codeos-accent: #3b82f6;
+}
+
+.no-animations * {
+    animation: none !important;
+    transition: none !important;
+}
+
+/* ==========================
+   ☀️ LIGHT MODE
+========================== */
+
+body.light-mode {
+    background: #f8fafc;
+    color: #0f172a;
+}
+
+body.light-mode .navbar {
+    background: rgba(255,255,255,.75);
+}
+
+body.light-mode .hero p {
+    color: #475569;
+}
+
+body.light-mode .card {
+    background: #ffffff;
+    color: #0f172a;
+    box-shadow: 0 10px 30px rgba(15,23,42,.08);
+}
+
+body.light-mode .card p {
+    color: #475569;
+}
+
+body.light-mode .settingsHeader p,
+body.light-mode .settingRow p {
+    color: #64748b;
+}
+
+body.light-mode #settingsPanel {
+    background: #ffffff;
+    color: #0f172a;
+}
+
+body.light-mode .settingsGroup {
+    border-color: rgba(15,23,42,.1);
+}
+
+body.light-mode .settingRow:hover {
+    background: rgba(15,23,42,.04);
+}
+
+body.light-mode #closeSettings {
+    color: #0f172a;
+    background: rgba(15,23,42,.06);
+}
+
+body.light-mode .settingRow select {
+    background: #f1f5f9;
+    color: #0f172a;
+}
+
+body.light-mode .secondary {
+    background: #e2e8f0;
+    color: #0f172a;
+}
+
+body.light-mode #backgroundCode .codeLine {
+    color: rgba(15,23,42,.06);
+}

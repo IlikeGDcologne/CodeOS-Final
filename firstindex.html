@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>.cdx — CodeOS Terminal</title>
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <div id="desktop">
+      <div id="wallpaper"></div>
+
+      <div class="desktop-topbar">
+        <div class="apple"></div>
+
+        <div class="menu-item active">Terminal</div>
+        <div class="menu-item">File</div>
+        <div class="menu-item">Edit</div>
+        <div class="menu-item">View</div>
+        <div class="menu-item">Shell</div>
+        <div class="menu-item">Window</div>
+        <div class="menu-item">Help</div>
+
+        <div class="topbar-spacer"></div>
+
+        <div id="clock"></div>
+      </div>
+
+      <div id="windows"></div>
+
+      <div class="dock">
+        <button onclick="newTerminal()" class="dock-icon terminal-icon">
+          >
+        </button>
+
+        <button onclick="openFileManager()" class="dock-icon">📁</button>
+
+        <button onclick="openSettings()" class="dock-icon">⚙️</button>
+
+        <button onclick="openCommandPalette()" class="dock-icon">⌘</button>
+      </div>
+    </div>
+
+    <!-- COMMAND PALETTE -->
+
+    <div id="paletteOverlay" class="overlay hidden">
+      <div class="palette">
+        <input id="paletteInput" placeholder="Search commands or actions..." />
+
+        <div id="paletteResults"></div>
+      </div>
+    </div>
+
+    <!-- SETTINGS -->
+
+    <div id="settingsOverlay" class="overlay hidden">
+      <div class="settings">
+        <div class="settings-header">
+          <h2>Terminal Settings</h2>
+
+          <button onclick="closeSettings()">×</button>
+        </div>
+
+        <label>
+          Theme
+
+          <select id="themeSelect">
+            <option value="mac">macOS Dark</option>
+            <option value="light">Light</option>
+            <option value="ocean">Ocean</option>
+            <option value="forest">Forest</option>
+            <option value="synth">Synthwave</option>
+            <option value="high">High Contrast</option>
+          </select>
+        </label>
+
+        <label>
+          Font size
+
+          <input id="fontSlider" type="range" min="10" max="26" value="14" />
+
+          <span id="fontValue">14px</span>
+        </label>
+
+        <label>
+          AI endpoint
+
+          <input id="aiEndpoint" placeholder="Optional API endpoint" />
+        </label>
+
+        <div class="settings-actions">
+          <button onclick="saveSettings()">Save</button>
+
+          <button onclick="closeSettings()">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- DROP OVERLAY -->
+
+    <div id="dropOverlay" class="drop-overlay hidden">
+      <div>
+        <div class="drop-icon">📁</div>
+
+        <h2>Drop files here</h2>
+
+        <p>Files will be imported into ~/Downloads</p>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>.cdx — CodeOS Terminal</title>
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <div id="desktop">
+      <div id="wallpaper"></div>
+
+      <div class="desktop-topbar">
+        <div class="apple"></div>
+
+        <div class="menu-item active">Terminal</div>
+        <div class="menu-item">File</div>
+        <div class="menu-item">Edit</div>
+        <div class="menu-item">View</div>
+        <div class="menu-item">Shell</div>
+        <div class="menu-item">Window</div>
+        <div class="menu-item">Help</div>
+
+        <div class="topbar-spacer"></div>
+
+        <div id="clock"></div>
+      </div>
+
+      <div id="windows"></div>
+
+      <div class="dock">
+        <button onclick="newTerminal()" class="dock-icon terminal-icon">
+          >
+        </button>
+
+        <button onclick="openFileManager()" class="dock-icon">📁</button>
+
+        <button onclick="openSettings()" class="dock-icon">⚙️</button>
+
+        <button onclick="openCommandPalette()" class="dock-icon">⌘</button>
+      </div>
+    </div>
+
+    <!-- COMMAND PALETTE -->
+
+    <div id="paletteOverlay" class="overlay hidden">
+      <div class="palette">
+        <input id="paletteInput" placeholder="Search commands or actions..." />
+
+        <div id="paletteResults"></div>
+      </div>
+    </div>
+
+    <!-- SETTINGS -->
+
+    <div id="settingsOverlay" class="overlay hidden">
+      <div class="settings">
+        <div class="settings-header">
+          <h2>Terminal Settings</h2>
+
+          <button onclick="closeSettings()">×</button>
+        </div>
+
+        <label>
+          Theme
+
+          <select id="themeSelect">
+            <option value="mac">macOS Dark</option>
+            <option value="light">Light</option>
+            <option value="ocean">Ocean</option>
+            <option value="forest">Forest</option>
+            <option value="synth">Synthwave</option>
+            <option value="high">High Contrast</option>
+          </select>
+        </label>
+
+        <label>
+          Font size
+
+          <input id="fontSlider" type="range" min="10" max="26" value="14" />
+
+          <span id="fontValue">14px</span>
+        </label>
+
+        <label>
+          AI endpoint
+
+          <input id="aiEndpoint" placeholder="Optional API endpoint" />
+        </label>
+
+        <div class="settings-actions">
+          <button onclick="saveSettings()">Save</button>
+
+          <button onclick="closeSettings()">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- DROP OVERLAY -->
+
+    <div id="dropOverlay" class="drop-overlay hidden">
+      <div>
+        <div class="drop-icon">📁</div>
+
+        <h2>Drop files here</h2>
+
+        <p>Files will be imported into ~/Downloads</p>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

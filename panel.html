@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>CodeOS DevTools</title>
+
+    <link rel="stylesheet" href="panel.css" />
+  </head>
+
+  <body>
+    <div class="app">
+      <!-- SIDEBAR -->
+
+      <aside class="sidebar">
+        <div class="sidebarHeader">
+          <div class="brandIcon">👾</div>
+
+          <div>
+            <div class="brandName">CodeOS</div>
+
+            <div class="brandSub">DEVTOOLS</div>
+          </div>
+        </div>
+
+        <button class="navItem active" data-view="inspector">
+          <span>🔍</span>
+          Inspector
+        </button>
+
+        <button class="navItem" data-view="code">
+          <span>⌨️</span>
+          Code
+        </button>
+
+        <button class="navItem" data-view="files">
+          <span>📡</span>
+          Files
+        </button>
+
+        <button class="navItem" data-view="sprites">
+          <span>👾</span>
+          Sprites
+        </button>
+
+        <button class="navItem" data-view="state">
+          <span>📦</span>
+          State
+        </button>
+
+        <button class="navItem" data-view="console">
+          <span>▣</span>
+          Console
+        </button>
+
+        <div class="sidebarBottom">
+          <div class="connectionStatus">
+            <span class="statusDot" id="statusDot"></span>
+
+            <span id="connectionText"> Connecting... </span>
+          </div>
+
+          <button class="refreshButton" id="refreshButton">↻ Refresh</button>
+        </div>
+      </aside>
+
+      <!-- MAIN -->
+
+      <main class="main">
+        <header class="topbar">
+          <div>
+            <div class="topEyebrow">CODEOS RUNTIME</div>
+
+            <h1 id="pageTitle">Inspector</h1>
+          </div>
+
+          <div class="runtimeBadge">
+            <span id="runtimeIndicator"> ● </span>
+
+            LIVE
+          </div>
+        </header>
+
+        <!-- INSPECTOR -->
+
+        <section class="view active" id="view-inspector">
+          <div class="heroCard">
+            <div class="heroOrb">👾</div>
+
+            <div>
+              <div class="miniLabel">RUNNING PROJECT</div>
+
+              <h2 id="projectName">Detecting CodeOS...</h2>
+
+              <p id="projectLocation">Waiting for inspected page.</p>
+            </div>
+          </div>
+
+          <div class="sectionHeader">
+            <div>
+              <span class="sectionEyebrow"> RUNTIME </span>
+
+              <h2>Project Overview</h2>
+            </div>
+          </div>
+
+          <div class="statGrid">
+            <div class="statCard">
+              <span class="statIcon">📄</span>
+              <span class="statValue" id="fileCount">—</span>
+              <span class="statName"> Files </span>
+            </div>
+
+            <div class="statCard">
+              <span class="statIcon">📦</span>
+              <span class="statValue" id="variableCount">—</span>
+              <span class="statName"> Variables </span>
+            </div>
+
+            <div class="statCard">
+              <span class="statIcon">👾</span>
+              <span class="statValue" id="spriteCount">—</span>
+              <span class="statName"> Sprites </span>
+            </div>
+
+            <div class="statCard">
+              <span class="statIcon">⚙️</span>
+              <span class="statValue" id="functionCount">—</span>
+              <span class="statName"> Functions </span>
+            </div>
+          </div>
+
+          <div class="panelCard">
+            <div class="panelCardHeader">
+              <div>
+                <span class="sectionEyebrow"> ACTIVE FILE </span>
+
+                <h3 id="currentFile">—</h3>
+              </div>
+
+              <span class="filePill" id="currentFileType"> — </span>
+            </div>
+
+            <pre class="codePreview" id="codePreview"></pre>
+          </div>
+        </section>
+
+        <!-- CODE -->
+
+        <section class="view" id="view-code">
+          <div class="toolbarRow">
+            <div>
+              <span class="sectionEyebrow"> LIVE SOURCE </span>
+
+              <h2>Edit CodeOS</h2>
+            </div>
+
+            <div class="codeToolbar">
+              <select id="fileSelector"></select>
+
+              <button class="applyButton" id="applyCode">
+                ⚡ Apply Changes & Restart
+              </button>
+            </div>
+          </div>
+
+          <div class="editNotice">
+            <span>✏️</span>
+
+            <div>
+              <strong> Live Code Editor </strong>
+
+              <span>
+                Changes are written to the running CodeOS project snapshot and
+                applied after restart.
+              </span>
+            </div>
+          </div>
+
+          <div class="codeEditorCard">
+            <div class="editorTop">
+              <span id="selectedFileName"> main.cdx </span>
+
+              <span class="livePill"> EDITABLE </span>
+            </div>
+
+            <textarea id="codeEditor" spellcheck="false"></textarea>
+          </div>
+
+          <div class="saveStatus" id="saveStatus"></div>
+        </section>
+
+        <!-- FILES -->
+
+        <section class="view" id="view-files">
+          <div class="toolbarRow">
+            <div>
+              <span class="sectionEyebrow"> PROJECT RESOURCES </span>
+
+              <h2>Files</h2>
+            </div>
+
+            <div class="networkSearch">
+              🔎
+
+              <input id="fileSearch" placeholder="Filter files..." />
+            </div>
+          </div>
+
+          <div class="networkHeader">
+            <span> NAME </span>
+
+            <span> TYPE </span>
+
+            <span> SIZE </span>
+
+            <span> LOCATION </span>
+          </div>
+
+          <div class="networkFileList" id="networkFileList"></div>
+        </section>
+
+        <!-- SPRITES -->
+
+        <section class="view" id="view-sprites">
+          <div class="sectionHeader">
+            <div>
+              <span class="sectionEyebrow"> RUNTIME OBJECTS </span>
+
+              <h2>Sprites</h2>
+            </div>
+          </div>
+
+          <div class="objectGrid" id="spriteGrid"></div>
+        </section>
+
+        <!-- STATE -->
+
+        <section class="view" id="view-state">
+          <div class="sectionHeader">
+            <div>
+              <span class="sectionEyebrow"> VARIABLES </span>
+
+              <h2>Runtime State</h2>
+            </div>
+          </div>
+
+          <div class="stateGrid" id="stateGrid"></div>
+        </section>
+
+        <!-- CONSOLE -->
+
+        <section class="view" id="view-console">
+          <div class="sectionHeader">
+            <div>
+              <span class="sectionEyebrow"> RUNTIME OUTPUT </span>
+
+              <h2>Console</h2>
+            </div>
+
+            <button class="clearConsole" id="clearConsole">Clear</button>
+          </div>
+
+          <div class="consoleBox" id="consoleBox"></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="panel.js"></script>
+  </body>
+</html>

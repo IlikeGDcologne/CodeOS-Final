@@ -1,0 +1,271 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>CodeOS Workspace</title>
+
+    <link rel="stylesheet" href="workspace.css" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="workspace">
+      <header class="topbar">
+        <h1 id="homeButton">💻 CodeOS</h1>
+
+        <div class="toolbar">
+          <button id="runBtn">▶ Run</button>
+
+          <button>🐞 Debug</button>
+
+          <button id="aiBtn">🤖 AI</button>
+
+          <button id="saveProjectBtn">💾 Save Project</button>
+
+          <button id="loadProjectBtn">📂 Open Project</button>
+
+          <input id="projectPicker" type="file" accept=".codeos" hidden />
+
+          <button id="timelineBtn">🕒 Timeline</button>
+          <button id="extensionsBtn">🧩 Extensions</button>
+          <button>⚙ Settings</button>
+        </div>
+      </header>
+
+      <main class="main">
+        <aside class="explorer">
+          <h3>📁 Explorer</h3>
+
+          <div id="fileList"></div>
+
+          <div class="explorerButtons">
+            <button id="newFileBtn">➕ New File</button>
+
+            <button id="newFolderBtn">📁 New Folder</button>
+
+            <button id="deleteFileBtn">🗑 Delete File</button>
+
+            <button id="moveFileBtn">📂 Move File</button>
+          </div>
+        </aside>
+
+        <div class="divider"></div>
+
+        <section class="editor">
+          <div class="tabs" id="tabs"></div>
+
+          <textarea spellcheck="false">
+
+// Welcome to CodeOS!
+
+say "Hello, World!"
+
+            </textarea
+          >
+
+          <img id="imagePreview" class="imagePreview" />
+        </section>
+      </main>
+
+      <footer class="console">> Console Ready...</footer>
+    </div>
+
+    <!-- CodeOS AI -->
+    <div id="aiOverlay" class="aiOverlay hidden">
+      <div id="aiPanel" class="aiPanel">
+        <div class="aiHeader">
+          <div>
+            <div class="aiTitle">🤖 CodeOS AI</div>
+            <div class="aiSubtitle">Your coding copilot</div>
+          </div>
+
+          <button id="closeAiBtn" class="aiClose">✕</button>
+        </div>
+
+        <div class="aiQuickActions">
+          <button data-ai-action="explain">💡 Explain</button>
+          <button data-ai-action="fix">🐞 Fix</button>
+          <button data-ai-action="improve">✨ Improve</button>
+          <button data-ai-action="build">🚀 Build</button>
+        </div>
+
+        <div id="aiMessages" class="aiMessages">
+          <div class="aiMessage ai">
+            <div class="aiAvatar">🤖</div>
+            <div class="aiBubble">
+              <strong>Hey! I'm CodeOS AI.</strong>
+              <br /><br />
+              I can help you understand, debug, improve, and build your code.
+              <br /><br />
+              Try asking:
+              <br />
+              <span class="aiExample">"Fix the error in this file"</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="aiInputArea">
+          <textarea
+            id="aiInput"
+            placeholder="Ask CodeOS AI anything..."
+            rows="3"
+          ></textarea>
+
+          <div class="aiInputBottom">
+            <span class="aiContext">📄 Current file</span>
+            <button id="aiSendBtn">Send ➤</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- File Modal -->
+
+    <div id="fileModal" class="modal hidden">
+      <div class="modalWindow">
+        <h2>📄 Create New File</h2>
+
+        <label>File Name</label>
+
+        <input id="fileName" type="text" placeholder="main" />
+
+        <label>File Type</label>
+
+        <input id="imagePicker" type="file" accept="image/*" class="hidden" />
+
+        <select id="fileType">
+          <option value="cdx">CodeOS (.cdx)</option>
+
+          <option value="html">HTML (.html)</option>
+
+          <option value="css">CSS (.css)</option>
+
+          <option value="js">JavaScript (.js)</option>
+
+          <option value="json">JSON (.json)</option>
+
+          <option value="txt">Text (.txt)</option>
+
+          <option value="image">🖼 Image</option>
+        </select>
+
+        <div class="modalButtons">
+          <button id="cancelFile">Cancel</button>
+
+          <button id="createFile">Create</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rename Modal -->
+
+    <div id="renameModal" class="modal hidden">
+      <div class="modalWindow">
+        <h2>✏ Rename File</h2>
+
+        <label>New Name</label>
+
+        <input id="renameInput" type="text" placeholder="File name" />
+
+        <div class="modalButtons">
+          <button id="cancelRename">Cancel</button>
+
+          <button id="confirmRename">Rename</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Command Palette -->
+
+    <div id="paletteOverlay">
+      <div id="commandPalette">
+        <input
+          id="commandInput"
+          type="text"
+          placeholder="Type a command..."
+          autocomplete="off"
+        />
+
+        <div id="commandList"></div>
+      </div>
+    </div>
+
+    <!-- Workspace Manager -->
+
+    <div id="workspaceOverlay" class="hidden">
+      <div id="workspacePopup">
+        <div class="workspaceHeader">
+          <h2>📂 Workspaces</h2>
+
+          <button id="closeWorkspacePopup">✕</button>
+        </div>
+
+        <div class="workspaceSearch">
+          <input
+            id="workspaceSearch"
+            type="text"
+            placeholder="🔍 Search workspaces..."
+          />
+        </div>
+
+        <button id="newWorkspaceCard">➕ New Workspace</button>
+
+        <div id="workspaceList"></div>
+      </div>
+    </div>
+
+    <!-- New Workspace Popup -->
+
+    <div id="newWorkspaceOverlay" class="modal hidden">
+      <div class="modalWindow">
+        <h2>🚀 Create Workspace</h2>
+
+        <label>Workspace Name</label>
+
+        <input
+          id="workspaceNameInput"
+          type="text"
+          placeholder="My Awesome Project"
+        />
+
+        <div class="modalButtons">
+          <button id="cancelWorkspace">Cancel</button>
+
+          <button id="createWorkspaceBtn">Create Workspace</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Timeline -->
+
+    <div id="timelineOverlay" class="hidden">
+      <div id="timelineWindow">
+        <div class="timelineHeader">
+          <div>
+            <h2>🕒 Timeline</h2>
+
+            <p>View and restore previous workspace versions.</p>
+          </div>
+
+          <button id="closeTimeline">✕</button>
+        </div>
+
+        <div id="timelineList"></div>
+      </div>
+    </div>
+
+    <script type="module" src="firebase.js"></script>
+
+    <script src="workspace.js"></script>
+    <script src="codeos-plus.js"></script>
+    <script src="codeos-ai-editor.js"></script>
+  </body>
+</html>
